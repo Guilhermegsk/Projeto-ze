@@ -99,7 +99,7 @@ function Calendario() {
 
         <section id="calendario">
         <Link to="/#programacao">
-            <button className="voltar-btn">Voltar à Programação</button>
+            <button className="voltar-btn">Voltar ao início</button>
           </Link>
           <h2>Calendário</h2>
           <p>Visualize os eventos e datas importantes abaixo:</p>

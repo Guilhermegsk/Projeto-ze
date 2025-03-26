@@ -51,8 +51,22 @@ export default function LandingPage() {
         <h2>oi</h2>
       </section>
 
-      <section id="sobre">
-        <h2>Sobre Nós</h2>
+      <section id="sobre" className="sobre-nos">
+        <div className="texto">
+          <h2>Sobre Nós</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec accumsan, 
+            nunc at posuere hendrerit, ligula felis facilisis quam, a dictum risus nunc non nulla. 
+            Vestibulum eu sapien libero. Nullam accumsan dui et elit sodales, vel efficitur metus bibendum. 
+            Integer nec sapien eget magna dictum luctus at at sapien. Phasellus sed dapibus metus. 
+            Sed at lorem augue.
+          </p>
+        </div>
+        <div className="botao-container">
+        <Link to="/AboutUs">
+          <button className="botao-about">Ver Detalhes</button>
+        </Link>
+        </div>
       </section>
 
       <section id="eventos">
