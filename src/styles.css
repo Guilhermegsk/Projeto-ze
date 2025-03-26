@@ -199,6 +199,22 @@ body {
     margin: 5px auto;
   }
   
+  
+  .card-evento {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-evento p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+  }
+
   /* Caixa de informações do evento */
   .info-box {
     background-color: #f5f5f5;
@@ -224,6 +240,27 @@ body {
   
 
   @media (max-width: 480px) {
+    .nav-links {
+      display: none; /* Esconder por padrão */
+      flex-direction: column;
+      background-color: white;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+  
+    .nav-links.active {
+      display: flex; /* Mostrar quando ativo */
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+
     h2 {
       font-size: 26px; /* Reduz o tamanho do título para telas muito pequenas */
     }
@@ -292,6 +329,28 @@ body {
   
   /* Responsividade para telas médias (481px a 768px) */
   @media (min-width: 481px) and (max-width: 768px) {
+
+    .nav-links {
+      display: none; /* Esconder por padrão */
+      flex-direction: column;
+      background-color: white;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+  
+    .nav-links.active {
+      display: flex; /* Mostrar quando ativo */
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+
     h2 {
       font-size: 24px; /* Ajuste do tamanho do título */
     }
@@ -337,6 +396,20 @@ body {
   
   /* Responsividade para telas grandes (769px a 1024px) */
   @media (min-width: 769px) and (max-width: 1024px) {
+    .nav-links {
+      display: flex !important;
+      flex-direction: row;
+      position: static;
+      background: none;
+      box-shadow: none;
+      width: auto;
+      padding: 0;
+    }
+
+    .hamburger {
+      display: none; /* Esconder o ícone em telas grandes */
+    }
+
     h2 {
       font-size: 28px; /* Ajuste do tamanho do título */
     }

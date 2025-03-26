@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import logo from "./assets/images/logo.png"; // Importa a imagem do logo
 
@@ -6,54 +6,63 @@ export default function LandingPage() {
 
   const getDataAtual = () => {
     const hoje = new Date();
-    const mesAtual = hoje.getMonth(); // 0 = Janeiro, 1 = Fevereiro, ...
-    const anoAtual = hoje.getFullYear();
-    const diaAtual = hoje.getDate();
-    return { mesAtual, anoAtual, diaAtual };
+    return {
+      mesAtual: hoje.getMonth(),
+      anoAtual: hoje.getFullYear(),
+      diaAtual: hoje.getDate(),
+    };
   };
 
-  // Estado para armazenar o mês, ano e o dia selecionado
   const { mesAtual, anoAtual, diaAtual } = getDataAtual();
   const [mes, setMes] = useState(mesAtual);
   const [ano, setAno] = useState(anoAtual);
-  const [diaSelecionado, setDiaSelecionado] = useState(`${anoAtual}-${String(mesAtual + 1).padStart(2, "0")}-${String(diaAtual).padStart(2, "0")}`);
+  const [diaSelecionado, setDiaSelecionado] = useState(
+    `${anoAtual}-${String(mesAtual + 1).padStart(2, "0")}-${String(diaAtual).padStart(2, "0")}`
+  );
+  const [programacao, setProgramacao] = useState({});
 
-  // Dados estáticos de programação
-  const programacao = {
-    "2025-03-30": "Evento especial: Workshop de React!",
-    "2025-03-31": "Palestra sobre UI/UX às 14h.",
-    "2025-04-01": "Hackathon de programação - das 9h às 18h."
-  };
+  // Função para carregar o XML
+  useEffect(() => {
+    fetch("/programacao.xml") // Substitua pelo caminho correto do seu arquivo XML
+      .then((response) => response.text())
+      .then((str) => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(str, "application/xml");
+        const eventos = xml.getElementsByTagName("evento");
+
+        const novaProgramacao = {};
+        for (let evento of eventos) {
+          const data = evento.getElementsByTagName("data")[0].textContent;
+          const descricao = evento.getElementsByTagName("descricao")[0].textContent;
+          if (!novaProgramacao[data]) {
+            novaProgramacao[data] = [];
+          }
+          novaProgramacao[data].push(descricao);
+        }
+        setProgramacao(novaProgramacao);
+      })
+      .catch((err) => console.error("Erro ao carregar XML:", err));
+  }, []);
 
   // Função para gerar os dias do mês
   const gerarDiasDoMes = (mes, ano) => {
-    const data = new Date(ano, mes + 1, 0); // Último dia do mês
-    const totalDias = data.getDate(); // Quantidade de dias no mês
-    const dias = [];
-    for (let i = 1; i <= totalDias; i++) {
-      dias.push(`${ano}-${String(mes + 1).padStart(2, "0")}-${String(i).padStart(2, "0")}`);
-    }
-    return dias;
+    const totalDias = new Date(ano, mes + 1, 0).getDate();
+    return Array.from({ length: totalDias }, (_, i) => 
+      `${ano}-${String(mes + 1).padStart(2, "0")}-${String(i + 1).padStart(2, "0")}`
+    );
   };
 
-  // Função para selecionar o dia clicado
-  const selecionarDia = (data) => {
-    setDiaSelecionado(data);
-  };
-
-  // Função para navegar entre os meses
+  // Função para navegar entre meses
   const navegarMes = (incremento) => {
     let novoMes = mes + incremento;
     let novoAno = ano;
-
     if (novoMes > 11) {
       novoMes = 0;
-      novoAno += 1;
+      novoAno++;
     } else if (novoMes < 0) {
       novoMes = 11;
-      novoAno -= 1;
+      novoAno--;
     }
-
     setMes(novoMes);
     setAno(novoAno);
   };
@@ -112,7 +121,7 @@ export default function LandingPage() {
           {diasDoMes.map((data) => (
             <div key={data} className="dia-container">
               <button
-                onClick={() => selecionarDia(data)}
+                onClick={() => setDiaSelecionado(data)}
                 className={`dia ${programacao[data] ? "com-evento" : ""}`}
               >
                 {data.split("-")[2]} {/* Exibe apenas o dia */}
@@ -127,7 +136,17 @@ export default function LandingPage() {
         {diaSelecionado && (
           <div className="info-box">
             <h3>Programação do Dia {diaSelecionado.split("-").reverse().join("/")}</h3>
-            <p>{programacao[diaSelecionado] || "Nada programado para este dia."}</p>
+            
+            {/* Verifica se há múltiplos eventos para o dia */}
+            {programacao[diaSelecionado] ? (
+              programacao[diaSelecionado].map((descricao, index) => (
+                <div key={index} className="card-evento">
+                  <p>{descricao}</p>
+                </div>
+              ))
+            ) : (
+              <p>Nada programado para este dia.</p>
+            )}
           </div>
         )}
       </section>
