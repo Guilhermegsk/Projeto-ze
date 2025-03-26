@@ -87,18 +87,18 @@ function Calendario() {
             <div className="line"></div>
           </div>
           <ul className={`nav-links ${isMenuActive ? 'active' : ''}`}>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre-nos">Sobre Nós</a></li>
-            <li><a href="#eventos">Eventos</a></li>
-            <li><a href="#programacao">Programação</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><Link to="/#inicio">Início</Link></li>
+            <li><Link to="/#sobre-nos">Sobre Nós</Link></li>
+            <li><Link to="/#eventos">Eventos</Link></li>
+            <li><Link to="/#programacao">Programação</Link></li>
+            <li><Link to="/#contato">Contato</Link></li>
           </ul>
           
           
         </nav>
 
         <section id="calendario">
-        <Link to="/">
+        <Link to="/#programacao">
             <button className="voltar-btn">Voltar à Programação</button>
           </Link>
           <h2>Calendário</h2>

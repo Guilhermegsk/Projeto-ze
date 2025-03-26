@@ -1,15 +1,28 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import "./styles.css";
 import logo from "./assets/images/logo.png";
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 export default function LandingPage() {
   
-  const [isMenuActive, setIsMenuActive] = useState(false);  
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const location = useLocation();  
   
   const toggleMenu = () => {
     setIsMenuActive(prevState => !prevState);  
   };
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.replace("#", ""));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0); 
+    }
+  }, [location]);
   
 
   return (
