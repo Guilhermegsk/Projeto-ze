@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import "./styles.css";
 import logo from "./assets/images/logo.png"; // Importa a imagem do logo
 
@@ -13,6 +13,14 @@ export default function LandingPage() {
     };
   };
 
+  
+  const [isMenuActive, setIsMenuActive] = useState(false);  // Estado para controlar o menu
+  
+  const toggleMenu = () => {
+    setIsMenuActive(prevState => !prevState);  // Alterna entre 'true' e 'false'
+  };
+  
+
   const { mesAtual, anoAtual, diaAtual } = getDataAtual();
   const [mes, setMes] = useState(mesAtual);
   const [ano, setAno] = useState(anoAtual);
@@ -21,15 +29,15 @@ export default function LandingPage() {
   );
   const [programacao, setProgramacao] = useState({});
 
-  // Função para carregar o XML
   useEffect(() => {
-    fetch("/programacao.xml") // Substitua pelo caminho correto do seu arquivo XML
+    // Carregar dados XML
+    fetch("/programacao.xml")
       .then((response) => response.text())
       .then((str) => {
         const parser = new DOMParser();
         const xml = parser.parseFromString(str, "application/xml");
         const eventos = xml.getElementsByTagName("evento");
-
+  
         const novaProgramacao = {};
         for (let evento of eventos) {
           const data = evento.getElementsByTagName("data")[0].textContent;
@@ -42,6 +50,9 @@ export default function LandingPage() {
         setProgramacao(novaProgramacao);
       })
       .catch((err) => console.error("Erro ao carregar XML:", err));
+  
+    // Lógica do menu hamburguer
+  
   }, []);
 
   // Função para gerar os dias do mês
@@ -69,28 +80,25 @@ export default function LandingPage() {
 
   const diasDoMes = gerarDiasDoMes(mes, ano);
 
-  function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active'); // Alterna a classe 'active'
-  }
-
   return (
     <div>
       {/* Navbar */}
       <nav>
         <img src={logo} alt="Minha Marca" className="logo" />
-        <ul className="nav-links">
+        <div className="hamburger" onClick={toggleMenu}>
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
+        <ul className={`nav-links ${isMenuActive ? 'active' : ''}`}>
           <li><a href="#inicio">Início</a></li>
           <li><a href="#sobre-nos">Sobre Nós</a></li>
           <li><a href="#eventos">Eventos</a></li>
           <li><a href="#contato">Contato</a></li>
           <li><a href="#programacao">Programação</a></li>
         </ul>
-        <div className="hamburger" onClick={toggleMenu}>
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
-        </div>
+        
+        
       </nav>
 
       {/* Seções */}

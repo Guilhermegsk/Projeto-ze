@@ -42,9 +42,9 @@ body {
     white-space: nowrap; /* Evita quebra de linha nos itens */
   }
   
-  nav ul li a:hover {
+  /* nav ul li a:hover {
     text-decoration: underline;
-  }
+  } */
 
   .logo {
     height: 50px; /* Ajuste conforme necessário */
@@ -52,7 +52,7 @@ body {
   }
 
   /*icone sanduiche*/
-  .nav-links {
+   /* .nav-links {
     display: flex;
     gap: 10px;
     list-style-type: none;
@@ -60,27 +60,28 @@ body {
   
   .nav-links a {
     text-decoration: none;
-    color: #a42026;
+    color: #ffffff;
     font-size: 12px;
   }
   
   .nav-links a:hover {
     color: #ecd4c4;
-  }
+  } */ 
   
   /* Hamburger icon (sandwich) */
   .hamburger {
-    display: none;
+    display: none; /* Por padrão, esconder o hambúrguer em telas grandes */
     flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
     cursor: pointer;
   }
   
   .hamburger .line {
-    width: 30px;
     height: 4px;
-    background-color: #a42026;
-    border-radius: 5px;
+    background-color: #fff;
+    border-radius: 2px;
   }
   
 
@@ -240,21 +241,31 @@ body {
   
 
   @media (max-width: 480px) {
-    .nav-links {
-      display: none; /* Esconder por padrão */
-      flex-direction: column;
-      background-color: white;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
+    
   
     .nav-links.active {
       display: flex; /* Mostrar quando ativo */
+      flex-direction: column;
+      gap: 20px;
+      background-color: rgb(255, 242, 242);  /* Cor de fundo branca */
+      color: #8B0000;  /* Texto vermelho escuro */
+      position: absolute;
+      top: 60px; /* Ajuste da posição do dropdown em relação ao topo */
+      left: 50%;  /* Centraliza horizontalmente */
+      transform: translateX(-50%);  /* Ajusta para garantir que o menu fique centralizado */
+      width: 90%;  /* O dropdown ocupa 90% da largura da tela */
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Sombras para destacar o menu */
+      z-index: 1000;  /* Garantir que o menu fique acima de outros conteúdos */
+      border-radius: 8px; /* Borda arredondada */
+    }
+    
+    .nav-links a {
+      text-decoration: none;  /* Remover o sublinhado */
+      color: #8B0000;  /* Texto vermelho escuro */
+      font-size: 18px;  /* Ajuste do tamanho da fonte */
+      padding: 10px;
+      transition: background-color 0.3s ease, color 0.3s ease;  /* Transição suave ao passar o mouse */
     }
   
     .hamburger {
@@ -304,8 +315,8 @@ body {
       font-size: 14px; /* Diminui o tamanho do texto dentro da caixa */
     }
 
-    .nav-links {
-      display: none; /* Escondido por padrão */
+    .nav-links { /* Escondido por padrão */
+      display: none;
       flex-direction: column;
       gap: 20px;
       background-color: white;
@@ -319,7 +330,7 @@ body {
     }
   
     .nav-links.active {
-      display: flex; /* Quando o menu estiver ativo */
+      display: flex !important;
     }
   
     .hamburger {
@@ -330,26 +341,25 @@ body {
   /* Responsividade para telas médias (481px a 768px) */
   @media (min-width: 481px) and (max-width: 768px) {
 
-    .nav-links {
-      display: none; /* Esconder por padrão */
+    .hamburger {
+      display: flex; /* Exibir o hambúrguer apenas em telas pequenas */
+    }
+  
+    .nav-links { /* Escondido por padrão */
+      display: none;
       flex-direction: column;
+      gap: 20px;
       background-color: white;
       position: absolute;
-      top: 60px;
+      top: 60px; /* Ajuste da posição do dropdown */
       right: 0;
       width: 100%;
       padding: 20px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
+      z-index: 1000; /* Garantir que o menu esteja acima de outros conteúdos */
     }
   
-    .nav-links.active {
-      display: flex; /* Mostrar quando ativo */
-    }
-  
-    .hamburger {
-      display: flex;
-    }
+    
 
     h2 {
       font-size: 24px; /* Ajuste do tamanho do título */
