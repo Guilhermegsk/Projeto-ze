@@ -1,0 +1,426 @@
+/* Estilos globais */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+  }
+  
+  /* Navbar */
+  nav {
+    background-color: #a42026;
+    color: #ecd4c4;
+    padding: 10px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; 
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; 
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: #ecd4c4;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap; /* Evita quebra de linha nos itens */
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+
+  .logo {
+    height: 50px; /* Ajuste conforme necessário */
+    width: auto;
+  }
+
+  /*icone sanduiche*/
+  .nav-links {
+    display: flex;
+    gap: 10px;
+    list-style-type: none;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #a42026;
+    font-size: 12px;
+  }
+  
+  .nav-links a:hover {
+    color: #ecd4c4;
+  }
+  
+  /* Hamburger icon (sandwich) */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .hamburger .line {
+    width: 30px;
+    height: 4px;
+    background-color: #a42026;
+    border-radius: 5px;
+  }
+  
+
+  body {
+    padding-top: 50px; /* Ajustei para compensar o menor tamanho do navbar */
+  }
+  
+  /* Seções */
+  section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  #inicio {
+    background-color: white;
+    color: #a42026;
+  }
+  
+  #sobre {
+    background-color: #a42026;
+    color: #ecd4c4;
+  }
+  
+  #eventos {
+    background-color: white;
+    color: #a42026;
+  }
+
+  #programacao {
+    background-color: white;
+    color: #a42026;
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza tudo dentro dessa seção */
+  }
+  
+  /* Título */
+  h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #a42026;
+    text-align: center;
+  }
+  
+  /* Navegação entre meses */
+  .navegacao-calendario {
+    display: flex;
+    justify-content: center;  /* Centraliza as setas */
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px; /* Aumenta o espaço entre a navegação e o calendário */
+    width: 100%;
+    max-width: 600px; /* Limita a largura do bloco com setas */
+  }
+  
+  .seta-nav {
+    background-color: transparent;
+    color: #a42026; /* Cor vermelha para as setas */
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .seta-nav:hover {
+    color: #86181c; /* Sombra para o efeito de hover */
+  }
+  
+  /* Estilização do calendário */
+  .calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas para os dias da semana */
+    gap: 30px; /* Aumenta o espaço entre os dias */
+    margin-top: 20px;
+  }
+  
+  .dia-container {
+    text-align: center;
+  }
+  
+  .dia {
+    background-color: #fff;
+    color: #a42026;
+    border: 1px solid #a42026;
+    padding: 25px; /* Aumenta o tamanho do botão */
+    font-size: 30px; /* Aumenta o tamanho do texto */
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+  
+  .dia:hover {
+    background-color: #a42026;
+    color: #ecd4c4;
+  }
+  
+  .dia.com-evento {
+    background-color: #a42026;
+    color: #ecd4c4;
+  }
+  
+  .evento-bolinha {
+    width: 18px;
+    height: 18px;
+    background-color: #a42026;
+    border-radius: 50%;
+    margin: 5px auto;
+  }
+  
+  /* Caixa de informações do evento */
+  .info-box {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+    margin-top: 30px; /* Garante que a caixa de informações fique abaixo do calendário */
+    border-radius: 8px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-box h3 {
+    margin-bottom: 10px;
+    color: #a42026;
+  }
+  
+  #contato {
+    background-color: #a42026;
+    color: #ecd4c4;
+  }
+  
+
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 26px; /* Reduz o tamanho do título para telas muito pequenas */
+    }
+  
+    .navegacao-calendario {
+      gap: 10px;
+      /*flex-direction: column; /* Coloca as setas em coluna */
+    }
+  
+    .seta-nav {
+      font-size: 30px; /* Reduz o tamanho das setas */
+    }
+  
+    .calendario {
+      grid-template-columns: repeat(5, 1fr); /* Exibe 4 dias por linha */
+      gap: 15px; /* Reduz o espaço entre os dias */
+    }
+  
+    .dia {
+      padding: 10px; /* Ajusta o padding dos dias */
+      font-size: 14px; /* Reduz o tamanho da fonte */
+      width: 40px; /* Ajusta o tamanho dos botões */
+      height: 40px; /* Ajusta o tamanho dos botões */
+    }
+  
+    .evento-bolinha {
+      width: 10px; /* Diminui a bolinha */
+      height: 10px; /* Diminui a bolinha */
+    }
+  
+    .info-box {
+      width: 80%; /* Aumenta a largura da caixa de informações */
+      padding: 20px; /* Ajusta o padding */
+    }
+  
+    .info-box h3 {
+      font-size: 16px; /* Diminui o tamanho do texto dentro da caixa */
+    }
+  
+    .info-box p {
+      font-size: 14px; /* Diminui o tamanho do texto dentro da caixa */
+    }
+
+    .nav-links {
+      display: none; /* Escondido por padrão */
+      flex-direction: column;
+      gap: 20px;
+      background-color: white;
+      position: absolute;
+      top: 60px; /* Ajuste da posição do dropdown */
+      right: 0;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000; /* Garantir que o menu esteja acima de outros conteúdos */
+    }
+  
+    .nav-links.active {
+      display: flex; /* Quando o menu estiver ativo */
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  }
+  
+  /* Responsividade para telas médias (481px a 768px) */
+  @media (min-width: 481px) and (max-width: 768px) {
+    h2 {
+      font-size: 24px; /* Ajuste do tamanho do título */
+    }
+  
+    .navegacao-calendario {
+      gap: 15px; /* Ajusta o espaçamento entre as setas */
+    }
+  
+    .seta-nav {
+      font-size: 28px; /* Ajuste das setas */
+    }
+  
+    .calendario {
+      grid-template-columns: repeat(5, 1fr); /* Exibe 5 dias por linha */
+      gap: 20px; /* Reduz o espaço entre os dias */
+    }
+  
+    .dia {
+      padding: 15px; /* Ajusta o tamanho dos dias */
+      font-size: 20px; /* Tamanho da fonte */
+      width: 50px; /* Ajuste do tamanho dos botões */
+      height: 50px; /* Ajuste do tamanho dos botões */
+    }
+  
+    .evento-bolinha {
+      width: 11px; /* Ajuste da bolinha */
+      height: 11px; /* Ajuste da bolinha */
+    }
+  
+    .info-box {
+      width: 80%; /* Ajuste da largura da caixa de informações */
+      padding: 15px; /* Ajuste do padding */
+    }
+  
+    .info-box h3 {
+      font-size: 16px; /* Ajuste no tamanho do título da caixa */
+    }
+  
+    .info-box p {
+      font-size: 14px; /* Ajuste no tamanho do texto */
+    }
+  }
+  
+  /* Responsividade para telas grandes (769px a 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    h2 {
+      font-size: 28px; /* Ajuste do tamanho do título */
+    }
+  
+    .navegacao-calendario {
+      gap: 20px; /* Ajuste do espaçamento entre as setas */
+    }
+  
+    .seta-nav {
+      font-size: 35px; /* Ajuste das setas */
+    }
+  
+    .calendario {
+      grid-template-columns: repeat(6, 1fr); /* Exibe 6 dias por linha */
+      gap: 25px; /* Ajuste do espaço entre os dias */
+    }
+  
+    .dia {
+      padding: 20px; /* Ajuste do padding */
+      font-size: 25px; /* Tamanho da fonte */
+      width: 60px; /* Ajuste do tamanho dos botões */
+      height: 60px; /* Ajuste do tamanho dos botões */
+    }
+  
+    .evento-bolinha {
+      width: 12px; /* Ajuste da bolinha */
+      height: 12px; /* Ajuste da bolinha */
+    }
+  
+    .info-box {
+      width: 70%; /* Ajuste da largura da caixa de informações */
+      padding: 20px; /* Ajuste do padding */
+    }
+  
+    .info-box h3 {
+      font-size: 18px; /* Ajuste no tamanho do título */
+    }
+  
+    .info-box p {
+      font-size: 16px; /* Ajuste no tamanho do texto */
+    }
+  }
+  
+  /* Responsividade para telas maiores que 1024px (padrão desktop) */
+  @media (min-width: 1025px) {
+    h2 {
+      font-size: 36px; /* Tamanho do título */
+    }
+  
+    .navegacao-calendario {
+      gap: 20px;
+    }
+  
+    .seta-nav {
+      font-size: 40px; /* Tamanho das setas */
+    }
+  
+    .calendario {
+      grid-template-columns: repeat(7, 1fr); /* Exibe 7 dias por linha */
+      gap: 30px; /* Ajuste do espaço entre os dias */
+    }
+  
+    .dia {
+      padding: 25px; /* Ajuste do padding */
+      font-size: 30px; /* Tamanho da fonte */
+      width: 80px; /* Ajuste do tamanho dos botões */
+      height: 80px; /* Ajuste do tamanho dos botões */
+    }
+  
+    .evento-bolinha {
+      width: 12px; /* Ajuste da bolinha */
+      height: 12px; /* Ajuste da bolinha */
+    }
+  
+    .info-box {
+      width: 60%; /* Ajuste da largura da caixa de informações */
+      padding: 20px; /* Ajuste do padding */
+    }
+  
+    .info-box h3 {
+      font-size: 20px; /* Ajuste no tamanho do título */
+    }
+  
+    .info-box p {
+      font-size: 18px; /* Ajuste no tamanho do texto */
+    }
+  }
