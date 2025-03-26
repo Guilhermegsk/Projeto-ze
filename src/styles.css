@@ -312,6 +312,15 @@ body {
       margin-top:5em;
     }
   }
+
+  @media (min-width: 401px) and (max-width: 480px) {
+    #calendario h2 {
+      font-size: 20px;
+      text-align: left; /* Alinha o título à esquerda */
+      margin-bottom: 10px; /* Espaçamento abaixo do título */
+      margin-top:-5em;
+    }
+  }
   
 
   @media (max-width: 480px) {
