@@ -35,7 +35,7 @@ export default function LandingPage() {
 
       {/* Seções */}
       <section id="inicio">
-        <h2>Bem-vindo à Nossa Landing Page</h2>
+        <h2>oi</h2>
       </section>
 
       <section id="sobre">

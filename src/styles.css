@@ -303,6 +303,15 @@ body {
     background-color: #a42026;
     color: #ecd4c4;
   }
+
+  @media (min-width: 360px) and (max-width: 400px) {
+    #calendario h2 {
+      font-size: 20px;
+      text-align: left; /* Alinha o título à esquerda */
+      margin-bottom: 10px; /* Espaçamento abaixo do título */
+      margin-top:5em;
+    }
+  }
   
 
   @media (max-width: 480px) {
@@ -338,15 +347,8 @@ body {
     }
 
     #calendario h2, #calendario p {
-      margin: 0;
+      /* margin: 0; */
       color: #a42026;
-    }
-    
-    #calendario h2 {
-      font-size: 20px;
-      text-align: left; /* Alinha o título à esquerda */
-      margin-bottom: 10px; /* Espaçamento abaixo do título */
-      margin-top:-50px;
     }
     
     #calendario p {
