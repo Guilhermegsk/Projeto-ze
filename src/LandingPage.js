@@ -139,7 +139,7 @@ const LandingPage = () => {
       icon={<FaInstagram size={24} />}
       size="large"
       style={{ backgroundColor: "#E4405F", border: "none" }}
-      href="https://instagram.com/seu_perfil"
+      href="https://www.instagram.com/jeffbezos/"
       target="_blank"
     />
 
