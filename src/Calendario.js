@@ -1,155 +1,37 @@
-import React from 'react';
-import { useEffect, useState} from "react";
-import logo from "./assets/images/logo.png";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Layout, Button, Typography, Calendar, ConfigProvider } from "antd";
+import { LeftOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+import ptBR from "antd/lib/locale/pt_BR";
 
-function Calendario() {
-    window.scrollTo(0, 0);
-    const getDataAtual = () => {
-        const hoje = new Date();
-        return {
-          mesAtual: hoje.getMonth(),
-          anoAtual: hoje.getFullYear(),
-          diaAtual: hoje.getDate(),
-        };
-      };
-    
-      
-      const [isMenuActive, setIsMenuActive] = useState(false);  
-      
-      const toggleMenu = () => {
-        setIsMenuActive(prevState => !prevState);  
-      };
-      
-    
-      const { mesAtual, anoAtual, diaAtual } = getDataAtual();
-      const [mes, setMes] = useState(mesAtual);
-      const [ano, setAno] = useState(anoAtual);
-      const [diaSelecionado, setDiaSelecionado] = useState(
-        `${anoAtual}-${String(mesAtual + 1).padStart(2, "0")}-${String(diaAtual).padStart(2, "0")}`
-      );
-      const [programacao, setProgramacao] = useState({});
-    
-      useEffect(() => {
-        fetch("/programacao.xml")
-          .then((response) => response.text())
-          .then((str) => {
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(str, "application/xml");
-            const eventos = xml.getElementsByTagName("evento");
-      
-            const novaProgramacao = {};
-            for (let evento of eventos) {
-              const data = evento.getElementsByTagName("data")[0].textContent;
-              const descricao = evento.getElementsByTagName("descricao")[0].textContent;
-              if (!novaProgramacao[data]) {
-                novaProgramacao[data] = [];
-              }
-              novaProgramacao[data].push(descricao);
-            }
-            setProgramacao(novaProgramacao);
-          })
-          .catch((err) => console.error("Erro ao carregar XML:", err));
-      
-      }, []);
-    
-      const gerarDiasDoMes = (mes, ano) => {
-        const totalDias = new Date(ano, mes + 1, 0).getDate();
-        return Array.from({ length: totalDias }, (_, i) => 
-          `${ano}-${String(mes + 1).padStart(2, "0")}-${String(i + 1).padStart(2, "0")}`
-        );
-      };
-    
-      const navegarMes = (incremento) => {
-        let novoMes = mes + incremento;
-        let novoAno = ano;
-        if (novoMes > 11) {
-          novoMes = 0;
-          novoAno++;
-        } else if (novoMes < 0) {
-          novoMes = 11;
-          novoAno--;
-        }
-        setMes(novoMes);
-        setAno(novoAno);
-      };
-    
-      const diasDoMes = gerarDiasDoMes(mes, ano);
+const { Header, Content, Footer } = Layout;
+const { Title } = Typography;
 
-    return (
-        <div>
+const Calendario = () => {
+  const navigate = useNavigate();
+
+  return (
+    <ConfigProvider locale={ptBR}>
+      <Layout style={{ minHeight: "100vh" }}>
         {/* Navbar */}
-        <nav>
-          <img src={logo} alt="Minha Marca" className="logo" />
-          <div className="hamburger" onClick={toggleMenu}>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
+        <Header style={{ position: "fixed", width: "100%", zIndex: 1000, textAlign: "center" }}>
+          <Title level={3} style={{ color: "white", margin: 0 }}>Calendário</Title>
+        </Header>
+
+        <Content style={{ marginTop: 64, padding: "50px 20px", display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+          <Button type="default" icon={<LeftOutlined />} onClick={() => navigate("/")}>
+            Voltar
+          </Button>
+          <div style={{ marginTop: 20, maxWidth: "800px", width: "100%" }}>
+            <Calendar fullscreen={false} style={{ width: "100%" }} />
           </div>
-          <ul className={`nav-links ${isMenuActive ? 'active' : ''}`}>
-            <li><Link to="/#inicio">Início</Link></li>
-            <li><Link to="/#sobre-nos">Sobre Nós</Link></li>
-            <li><Link to="/#eventos">Eventos</Link></li>
-            <li><Link to="/#programacao">Programação</Link></li>
-            <li><Link to="/#contato">Contato</Link></li>
-          </ul>
-          
-          
-        </nav>
+        </Content>
 
-        <section id="calendario">
-        <Link to="/#programacao">
-            <button className="voltar-btn">Voltar ao início</button>
-          </Link>
-          <h2>Calendário</h2>
-          <p>Visualize os eventos e datas importantes abaixo:</p>
+        {/* Footer */}
+        <Footer style={{ textAlign: "center", marginTop: "auto" }}>© 2024 Todos os direitos reservados.</Footer>
+      </Layout>
+    </ConfigProvider>
+  );
+};
 
-        {/* Navegação entre os meses */}
-        <div className="navegacao-calendario">
-          <button onClick={() => navegarMes(-1)} className="seta-nav">{'<'}</button>
-          <h3>{`${mes + 1}/${ano}`}</h3>
-          <button onClick={() => navegarMes(1)} className="seta-nav">{'>'}</button>
-        </div>
-
-        {/* Calendário */}
-        <div className="calendario">
-          {diasDoMes.map((data) => (
-            <div key={data} className="dia-container">
-              <button
-                onClick={() => setDiaSelecionado(data)}
-                className={`dia ${programacao[data] ? "com-evento" : ""}`}
-              >
-                {data.split("-")[2]} {/* Exibe apenas o dia */}
-              </button>
-              {/* Bolinha abaixo dos dias com eventos */}
-              {programacao[data] && <div className="evento-bolinha"></div>}
-            </div>
-          ))}
-        </div>
-
-        {/* Caixa de informações do evento */}
-        {diaSelecionado && (
-          <div className="info-box">
-            <h3>Programação do Dia {diaSelecionado.split("-").reverse().join("/")}</h3>
-            
-            {/* Verifica se há múltiplos eventos para o dia */}
-            {programacao[diaSelecionado] ? (
-              programacao[diaSelecionado].map((descricao, index) => (
-                <div key={index} className="card-evento">
-                  <p>{descricao}</p>
-                </div>
-              ))
-            ) : (
-              <p>Nada programado para este dia.</p>
-            )}
-          </div>
-        )}
-        {/* <Link to="/programacao">
-            <button className="voltar-btn">Voltar à Programação</button>
-          </Link> */}
-      </section>
-      </div>
-    );
-  }
-  
-  export default Calendario;
+export default Calendario;

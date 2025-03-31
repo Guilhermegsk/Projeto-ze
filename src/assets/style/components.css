@@ -1,0 +1,139 @@
+/* Header fixo no topo */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #a42026;
+  }
+  
+  /* Menu Desktop (visível apenas em telas grandes) */
+  .desktop-menu {
+    flex: 1;
+    justify-content: center;
+    background-color: #a42026;
+    border-bottom: none;
+  }
+  
+  /* Esconde o menu desktop em telas menores */
+  @media (max-width: 768px) {
+    .desktop-menu {
+      display: none;
+    }
+  }
+  
+  /* Botão de menu mobile */
+  .mobile-menu-button {
+    color: white;
+    display: none; /* Oculto por padrão */
+  }
+  
+  /* Mostra o botão do menu mobile apenas em telas pequenas */
+  @media (max-width: 768px) {
+    .mobile-menu-button {
+      display: block;
+    }
+  }
+  
+  /* Drawer (menu lateral) */
+  .ant-drawer-body {
+    background-color: #a42026 !important;
+  }
+  
+  .ant-menu {
+    background-color: #a42026 !important;
+    border-right: none;
+  }
+  
+  /* Espaço para não esconder o conteúdo atrás da Navbar fixa */
+  .content-spacing {
+    margin-top: 64px;
+  }
+  
+
+  /* Seção de início */
+/* Seção de início */
+.inicio-section {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Certifique-se de que a altura é 100% da tela */
+  display: flex;
+  align-items: flex-start; /* Ajusta para alinhar os itens ao topo da tela */
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-size: contain; /* A imagem vai cobrir toda a área da seção */
+  background-position: top center; /* Move a imagem para o topo e centraliza horizontalmente */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  padding: 0; /* Remove qualquer padding para evitar vazamentos */
+  margin: 0; /* Remove qualquer margem extra */
+  overflow: hidden; /* Impede que qualquer conteúdo vaze da área visível */
+  background-image: url('../images/inicio.png')
+}
+
+@media (max-width: 768px) {
+  .inicio-section {
+    background-image: url('../images/inicio_mobile.png'); /* Imagem para telas pequenas (mobile) */
+    /* padding-top: 180px; */
+    height: 30vh;
+  }
+  .inicio-button {
+    background-color: #ecd4c4;
+    border-color: #a42026;
+    color: black;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    /* margin-top: 490px;
+    margin-left: 760px; */
+  }
+}
+
+/* Ajuste da overlay */
+.inicio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* Ajuste da altura da overlay no eixo Y */
+  z-index: 1; /* Coloca a overlay abaixo do conteúdo */
+}
+
+/* Conteúdo da seção */
+.inicio-content {
+  position: relative;
+  z-index: 2; /* Garante que o texto fique acima da overlay */
+  max-width: 800px;
+}
+
+/* .inicio-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.inicio-text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+} */
+
+/* Estilização do botão */
+.inicio-button {
+  background-color: #ecd4c4;
+  border-color: #a42026;
+  color: black;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  margin-top: 490px;
+  margin-left: 760px;
+}
+
+.inicio-button:hover {
+  background-color: #8a1a20;
+  border-color: #8a1a20;
+}
+
+  
