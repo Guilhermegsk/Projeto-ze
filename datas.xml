@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventos>
+  <!-- Quartas-feiras -->
+  <evento data="2025-04-02">
+    <titulo>Culto de Oração</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+  <evento data="2025-04-09">
+    <titulo>Culto de Oração</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+  <evento data="2025-04-16">
+    <titulo>Culto de Oração</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+  <evento data="2025-04-23">
+    <titulo>Culto de Oração</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+  <evento data="2025-04-30">
+    <titulo>Culto de Oração</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+
+  <!-- Sextas-feiras -->
+  <evento data="2025-04-04">
+    <titulo>Culto de Doutrina</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+  <evento data="2025-04-11">
+    <titulo>Culto de Doutrina</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+  <evento data="2025-04-18">
+    <titulo>Culto de Doutrina</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+  <evento data="2025-04-25">
+    <titulo>Culto de Doutrina</titulo>
+    <descricao>Ás 19:00</descricao>
+  </evento>
+
+  <!-- Domingos -->
+  <evento data="2025-04-06">
+    <titulo>Escola bíblica dominical</titulo>
+    <descricao>Ás 9:00</descricao>
+  </evento>
+  <evento data="2025-04-06">
+    <titulo>Culto de louvor e adoração</titulo>
+    <descricao>Às 18:30</descricao>
+  </evento>
+  <evento data="2025-04-13">
+    <titulo>Escola bíblica dominical</titulo>
+    <descricao>Ás 9:00</descricao>
+  </evento>
+  <evento data="2025-04-13">
+    <titulo>Culto de louvor e adoração</titulo>
+    <descricao>Às 18:30</descricao>
+  </evento>
+  <evento data="2025-04-20">
+    <titulo>Escola bíblica dominical</titulo>
+    <descricao>Ás 9:00</descricao>
+  </evento>
+  <evento data="2025-04-20">
+    <titulo>Culto de louvor e adoração</titulo>
+    <descricao>Às 18:30</descricao>
+  </evento>
+  <evento data="2025-04-27">
+    <titulo>Escola bíblica dominical</titulo>
+    <descricao>Ás 9:00</descricao>
+  </evento>
+  <evento data="2025-04-27">
+    <titulo>Culto de louvor e adoração</titulo>
+    <descricao>Às 18:30</descricao>
+  </evento>
+</eventos>

@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import Calendario from './Calendario';
 import Login from './login';
+import Dashboard from './Dashboard';
+;
+
 
 function App() {
   return (
@@ -11,6 +14,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/calendario" element={<Calendario />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} /> {/* nova rota */}
       </Routes>
     </Router>
   );
